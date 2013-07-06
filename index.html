@@ -16,12 +16,12 @@
             
             $(document).ready(function() {
                 $('#entry').click(function(event){
-                    $.post('http://working_hours.reuvens.c9.io/report?op=entry&type=1&' + getDateParams(new Date()), function(data) {
+                    $.post('/report?op=entry&type=1&' + getDateParams(new Date()), function(data) {
                         $('#status').html(data);   
                     });
                 });
                 $('#exit').click(function(event){
-                    $.post('http://working_hours.reuvens.c9.io/report?op=exit&type=1&' + getDateParams(new Date()), function(data) {
+                    $.post('/report?op=exit&type=1&' + getDateParams(new Date()), function(data) {
                         $('#status').html(data);
                     });
                 });
@@ -41,7 +41,7 @@
                 <i class="icon-flag icon-2x"></i> סוף היום <br>יאללה, הביתה</a>
                 <br><br>
 
-                <a class="btn btn-success" href="http://working_hours.reuvens.c9.io/fetch">
+                <a class="btn btn-success" href="/fetch">
                 <i class="icon-shopping-cart icon-large"></i>יאללה הגיע הזמן לדיווח <br>לחץ כדי להוריד את הקובץ</a>
                 <br><br>
                 
