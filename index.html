@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hours report app</title>
+        <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+        <link href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+        <script>
+            function getDateParams(date) {
+                return "day=" + date.getDate() +
+                    "&month=" + (date.getMonth() + 1) +
+                    "&year=" + date.getFullYear() +
+                    "&hour=" + date.getHours() +
+                    "&minutes=" + date.getMinutes();
+            }
+            
+            $(document).ready(function() {
+                $('#entry').click(function(event){
+                    $.post('http://working_hours.reuvens.c9.io/report?op=entry&type=1&' + getDateParams(new Date()), function(data) {
+                        $('#status').html(data);   
+                    });
+                });
+                $('#exit').click(function(event){
+                    $.post('http://working_hours.reuvens.c9.io/report?op=exit&type=1&' + getDateParams(new Date()), function(data) {
+                        $('#status').html(data);
+                    });
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container" style="width:450px">
+            <div style="text-align:center;">
+                <br>
+                <a id="entry" class="btn btn-large btn-danger btn-block">
+                    <i class="icon-flag icon-2x"></i> יום חדש <br>הגיע הזמן להרשם לעבודה</a>
+                <br>
+
+                <a id="exit" class="btn btn-large btn-info btn-block">
+                <i class="icon-flag icon-2x"></i> סוף היום <br>יאללה, הביתה</a>
+                <br><br>
+
+                <a class="btn btn-success" href="http://working_hours.reuvens.c9.io/fetch">
+                <i class="icon-shopping-cart icon-large"></i>יאללה הגיע הזמן לדיווח <br>לחץ כדי להוריד את הקובץ</a>
+                <br><br>
+                
+                <p id="status"></p>
+            </div>
+        </div>
+    </body>
+</html>
