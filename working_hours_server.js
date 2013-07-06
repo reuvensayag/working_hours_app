@@ -1,4 +1,3 @@
-
 var fs = require('fs');
 var filename = "working_hours.csv";
 
@@ -58,6 +57,8 @@ function downloadCsvFile(res) {
 var http = require("http");
 var url = require("url");
 
+var port = process.env.PORT || 5000;
+
 // create a server
 http.createServer(function(req, res) {
     // on every request, we'll output 'Hello world'
@@ -81,4 +82,5 @@ http.createServer(function(req, res) {
             res.write(url_parts.query["op"] + "<br>");
             res.end("unknown url:" + url.format(url_parts) + "<br>");
     }
-}).listen(process.env.PORT, process.env.IP);
+//}).listen(process.env.PORT, process.env.IP);
+}).listen(port);
